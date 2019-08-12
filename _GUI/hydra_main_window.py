@@ -27,7 +27,9 @@ import numpy as np
 import scipy
 from bottle import route, run, request, get, post, redirect, template, static_file
 import threading
+import socket
 import subprocess
+from udp_output import emit_bearing_msg
 
 np.seterr(divide='ignore')
 
@@ -358,6 +360,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             self.module_signal_processor.noise_checked = False 
             self.module_receiver.switch_noise_source(0)
+
     def set_iq_preprocessing_params(self):
         """
             Update IQ preprocessing parameters
@@ -710,6 +713,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.DOA_res_fd.write(html_str)
             self.DOA_res_fd.truncate()
             #print("[ INFO ] Python GUI: DOA results writen:",html_str)
+
+            # Send the bearing information to Chasemapper
+            emit_bearing_msg(bearing=DOA, confidence = confidence_sum)
                                                                                  
         #self.DOA_res_fd.close()
 
