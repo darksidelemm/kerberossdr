@@ -30,6 +30,6 @@ def emit_bearing_msg(bearing=0.0, confidence=100.0, udp_port=55673):
         pass
     s.bind(('',udp_port))
     try:
-        s.sendto(json.dumps(packet), ('<broadcast>', udp_port))
+        s.sendto(json.dumps(packet).encode('ascii'), ('<broadcast>', udp_port))
     except socket.error:
-        s.sendto(json.dumps(packet), ('127.0.0.1', udp_port))
+        s.sendto(json.dumps(packet).encode('ascii'), ('127.0.0.1', udp_port))
