@@ -9,11 +9,12 @@ import json
 import socket
 
 
-def emit_bearing_msg(bearing=0.0, confidence=100.0, udp_port=55673):
+def emit_bearing_msg(bearing=0.0, confidence=100.0, power = -1, udp_port=55673):
     packet = {
         'type' : 'BEARING',
         'bearing' : bearing,
         'confidence': confidence,
+        'power': power,
         'bearing_type': 'relative',
         'source': 'kerberos-sdr'
     }
