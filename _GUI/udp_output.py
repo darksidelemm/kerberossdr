@@ -7,6 +7,7 @@
 #
 import json
 import socket
+import numpy as np
 
 
 def emit_bearing_msg(bearing=0.0, confidence=100.0, power = -1, raw_bearings = [], raw_doa = [], udp_port=55673):
@@ -15,8 +16,8 @@ def emit_bearing_msg(bearing=0.0, confidence=100.0, power = -1, raw_bearings = [
         'bearing' : bearing,
         'confidence': confidence,
         'power': power,
-        'raw_bearings': len(raw_bearings),
-        'raw_doa': len(raw_doa),
+        'raw_bearing_angles': list(np.around(raw_bearings,1)),
+        'raw_doa': list(np.around(raw_doa,3)),
         'bearing_type': 'relative',
         'source': 'kerberos-sdr'
     }
