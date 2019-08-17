@@ -715,7 +715,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             #print("[ INFO ] Python GUI: DOA results writen:",html_str)
 
             # Send the bearing information to Chasemapper
-            emit_bearing_msg(bearing=DOA, confidence = confidence_sum, power = np.maximum(0, max_power_level))
+            emit_bearing_msg(bearing=DOA, confidence = confidence_sum, power = np.maximum(0, max_power_level), raw_bearings=thetas, raw_doa=COMBINED_LOG)
                                                                                  
         #self.DOA_res_fd.close()
 
