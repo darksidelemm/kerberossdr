@@ -10,7 +10,7 @@ import socket
 import numpy as np
 
 
-def emit_bearing_msg(bearing=0.0, confidence=100.0, power = -1, raw_bearings = [], raw_doa = [], udp_port=55673):
+def emit_bearing_msg(bearing=0.0, confidence=100.0, power = -1, raw_bearings = [], raw_doa = [], udp_port=55672):
     packet = {
         'type' : 'BEARING',
         'bearing' : bearing,
