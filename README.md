@@ -1,5 +1,8 @@
 <h4>Change Log</h4>
 
+* This branch is currently in testing status. It's purpose it to get ksdr working in the latest kubuntu (and Ubuntu) based linux, version 20.04 LTS. So far it is working in kubuntu 20.04 LTS (It should also work in Ubuntu 20.04 LTS but has not been tested yet). 
+* These changes were made AFTER I installed kerberossdr using the normal method and it didnt work in a new kubuntu 20.04 install, so that was my installation method, I just edited the python files afterwards...basically, the only changes needed were to import PyQt5 where ever PyQt4 was imported before (using slightly different syntax than PyQt4, you cant just change PyQt4 to PyQt5). The files that needed the PyQt5 import changes were: _GUI/hydra_main_window.py, _signalProcessing/hydra_signal_processor.py and in _GUI/hydra_main_window_layout.py. Then, find/replaced all the instances of .setMargin(0) to .setContentsMargins(0,0,0,0) in the _GUI/hydra_main_window_layout.py file.
+
 * Selecting “Uniform Gain” will allow you to set the same gain value for all four receivers.
 * The antenna spacing value (s, fraction of wavelength) is automatically calculated based on frequency and a user set antenna spacing (s’, meters). For circular arrays, just use the spacing between each antenna, the program will calculate the radius for you.
 * I’ve added a button to the Web UI to enable the sync display and the noise source in one click. If the noise source or the sync display (or both) is enabled the button will disable both. This should make calibration less cumbersome on mobile devices.
