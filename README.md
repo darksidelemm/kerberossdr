@@ -1,4 +1,6 @@
 <h4>Change Log</h4>
+* ****Note, this branch is meant for, and only works in, Ubuntu + kubunu versions 20.04 LTS. It does not work on older linux versions. 
+* This branch is in testing/beta status. Use at your own risk. I was able to get it working on a Dell 9360 laptop with fresh installs of Ubuntu 20.04 LTS and kubuntu 20.04 LTS. That is hardly extensive testing. It seemed to work fine for me however. For the official version of the sofware please visit rtl-sdr.com and kerberossdr.com. If you are completely new to linux and python, you may want to stick to the official software and stay on Ubuntu 18.04 until this is vetted by more people****
 
 * The purpose of this branch is to get ksdr working in the latest kubuntu (and Ubuntu) based linux, which use different libraries (PyQt5 and libffi7). This branch is currently in testing status, but I have successfully gotten it working in both Ubuntu 20.04 LTS and kubuntu 20.04 LTS. 
 * The installation instructions below have been updated for installing PyQt5 and libffi7, which are compatable with the new Linux releases instead of PyQt4 and libffi6. 
