@@ -1,4 +1,6 @@
 <h4>Change Log</h4>
+
+* ***Edit2: after more testing in Ubuntu, there is an issue with the window size/margins that doesnt seem to be an issue with kubuntu. Working on a fix...***
 * ****Note, this branch is meant for, and only works in, Ubuntu + kubunu versions 20.04 LTS. It does not work on older linux versions. 
 * This branch is in testing/beta status. Use at your own risk. I was able to get it working on a Dell 9360 laptop with fresh installs of Ubuntu 20.04 LTS and kubuntu 20.04 LTS. That is hardly extensive testing. It seemed to work fine for me however. For the official version of the sofware please visit rtl-sdr.com and kerberossdr.com. If you are completely new to linux and python, you may want to stick to the official software and stay on Ubuntu 18.04 until this is vetted by more people****
 
