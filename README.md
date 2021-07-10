@@ -4,6 +4,12 @@ Note that on Ubuntu 20.04 or newer PyQt4 is no longer available. A contributor h
 
 <h4>Change Log</h4>
 
+* The purpose of this branch is to get ksdr working in the latest kubuntu (and Ubuntu) based linux, which use different libraries (PyQt5 and libffi7). This branch is currently in testing status, but I have successfully gotten it working in both Ubuntu 20.04 LTS and kubuntu 20.04 LTS.
+* This branch is meant for, and only works in, Ubuntu + kubunu versions 20.04 LTS. It does not work on older linux versions. 
+* ***Note for smaller display areas: There seems to be an issue on machines that do not support higher display resolutions. The Kerberossdr window will not resize properly if the display doesn't support a resolution with a height above around 960 (e.g 1280x960 was the minimum I could get the whole window visible with). This shouldn't be a problem on most newer desktops and higher end laptops but since a lot of laptops only support 1366x768 this is an issue for those. While this issue is present in the original kerberossdr software on Ubuntu 18.04/PyQt4, the level of screen clipping is, it seems, more pronounced on 20.04/PyQt5 and you cant get to the "Start Processing button" where you could at least get to that on 18.04/PyQt4.***
+* The installation instructions below have been updated for installing PyQt5 and libffi7, which are compatable with the new Linux releases instead of PyQt4 and libffi6. 
+* A little background in case you run into problems so you will know what I did to get this working (if you want to go to the original rtl-sdr blog github repository and make the changes manually). Basically, the only changes needed in the Python code were to import PyQt5 where ever PyQt4 was imported  (using slightly different syntax than PyQt4, you cant just change PyQt4 to PyQt5, see  _GUI/hydra_main_window.py for an example). The files that needed the PyQt5 import changes were: _GUI/hydra_main_window.py, _signalProcessing/hydra_signal_processor.py and in _GUI/hydra_main_window_layout.py. Then, find/replaced all the instances of .setMargin(0) to .setContentsMargins(0,0,0,0) in the _GUI/hydra_main_window_layout.py file. Finally, I updated the install instructions to get rid of Pyqt4 and use PyQt5, and then changed libffi6 to libffi7.
+
 * Selecting “Uniform Gain” will allow you to set the same gain value for all four receivers.
 * The antenna spacing value (s, fraction of wavelength) is automatically calculated based on frequency and a user set antenna spacing (s’, meters). For circular arrays, just use the spacing between each antenna, the program will calculate the radius for you.
 * I’ve added a button to the Web UI to enable the sync display and the noise source in one click. If the noise source or the sync display (or both) is enabled the button will disable both. This should make calibration less cumbersome on mobile devices.
@@ -21,7 +27,7 @@ Note that on Ubuntu 20.04 or newer PyQt4 is no longer available. A contributor h
 1. <h4>Install Dependencies via apt:</h4>
 
   `sudo apt update`<br>
-  `sudo apt install python3-pip python3-pyqt4 pyqt4-dev-tools build-essential gfortran libatlas3-base libatlas-base-dev python3-dev python3-setuptools libffi6 libffi-dev python3-tk pkg-config libfreetype6-dev php7.2-cli cpufrequtils`
+  `sudo apt install python3-pip build-essential gfortran libatlas3-base libatlas-base-dev python3-dev python3-setuptools libffi-dev python3-tk pkg-config libfreetype6-dev php-cli wondershaper python3-pyqt5 libffi7 cpufrequtils`
 
 2. <h4>Uninstall any preinstalled numpy packages as we want to install with pip3 to get optimized BLAS.</h4>
 
@@ -68,7 +74,7 @@ Install KerberosSDR Demo Software
 
 7. <h4>Clone or unzip the software</h4>
 
-  `git clone https://github.com/rtlsdrblog/kerberossdr`<br>
+  `git clone https://github.com/rfjohnso/kerberossdr`<br>
   `cd kerberossdr`<br>
   `sh setup_init.sh`
 

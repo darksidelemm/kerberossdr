@@ -24,7 +24,9 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtGui, QtCore
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -56,7 +58,7 @@ class Ui_MainWindow(object):
         self.page_4 = QtGui.QWidget()
         self.page_4.setObjectName(_fromUtf8("page_4"))
         self.verticalLayout_7 = QtGui.QVBoxLayout(self.page_4)
-        self.verticalLayout_7.setMargin(0)
+        self.verticalLayout_7.setContentsMargins(0,0,0,0)
         self.verticalLayout_7.setObjectName(_fromUtf8("verticalLayout_7"))
         self.groupBox_7 = QtGui.QGroupBox(self.page_4)
         self.groupBox_7.setObjectName(_fromUtf8("groupBox_7"))
@@ -317,7 +319,7 @@ class Ui_MainWindow(object):
         self.page = QtGui.QWidget()
         self.page.setObjectName(_fromUtf8("page"))
         self.horizontalLayout_2 = QtGui.QHBoxLayout(self.page)
-        self.horizontalLayout_2.setMargin(0)
+        self.horizontalLayout_2.setContentsMargins(0,0,0,0)
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
 
         self.groupBox = QtGui.QGroupBox(self.page)
@@ -379,7 +381,7 @@ class Ui_MainWindow(object):
         self.page_2 = QtGui.QWidget()
         self.page_2.setObjectName(_fromUtf8("page_2"))
         self.verticalLayout = QtGui.QVBoxLayout(self.page_2)
-        self.verticalLayout.setMargin(0)
+        self.verticalLayout.setContentsMargins(0,0,0,0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.groupBox_2 = QtGui.QGroupBox(self.page_2)
         self.groupBox_2.setObjectName(_fromUtf8("groupBox_2"))
@@ -489,7 +491,7 @@ class Ui_MainWindow(object):
         self.page_3 = QtGui.QWidget()
         self.page_3.setObjectName(_fromUtf8("page_3"))
         self.verticalLayout_3 = QtGui.QVBoxLayout(self.page_3)
-        self.verticalLayout_3.setMargin(0)
+        self.verticalLayout_3.setContentsMargins(0,0,0,0)
         self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
         self.checkBox_en_passive_radar = QtGui.QCheckBox(self.page_3)
         self.checkBox_en_passive_radar.setObjectName(_fromUtf8("checkBox_en_passive_radar"))
