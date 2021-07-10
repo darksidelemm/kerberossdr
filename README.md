@@ -21,7 +21,7 @@ Note that on Ubuntu 20.04 or newer PyQt4 is no longer available. A contributor h
 1. <h4>Install Dependencies via apt:</h4>
 
   `sudo apt update`<br>
-  `sudo apt install python3-pip python3-pyqt4 pyqt4-dev-tools build-essential gfortran libatlas3-base libatlas-base-dev python3-dev python3-setuptools libffi6 libffi-dev python3-tk pkg-config libfreetype6-dev php7.2-cli`
+  `sudo apt install python3-pip python3-pyqt4 pyqt4-dev-tools build-essential gfortran libatlas3-base libatlas-base-dev python3-dev python3-setuptools libffi6 libffi-dev python3-tk pkg-config libfreetype6-dev php7.2-cli cpufrequtils`
 
 2. <h4>Uninstall any preinstalled numpy packages as we want to install with pip3 to get optimized BLAS.</h4>
 
