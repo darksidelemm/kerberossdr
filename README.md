@@ -1,8 +1,7 @@
-<h4>Ubuntu 20.04 Users NOTE:</h4>
-
-Note that on Ubuntu 20.04 or newer PyQt4 is no longer available. A contributor has created his own modification to the code which uses PyQt5. You can try it at this link https://github.com/rfjohnso/kerberossdr
 
 <h4>Change Log</h4>
+
+* Further Updates: More changes to the files to make them *actually* PyQt5 compatible (e.g. handle the move of all the Qt5 Wigets to the QtWidgets namespace). PyQt5 should be installed via pip, though we still need to get the Qt5 libs via the system package manager.
 
 * The purpose of this branch is to get ksdr working in the latest kubuntu (and Ubuntu) based linux, which use different libraries (PyQt5 and libffi7). This branch is currently in testing status, but I have successfully gotten it working in both Ubuntu 20.04 LTS and kubuntu 20.04 LTS.
 * This branch is meant for, and only works in, Ubuntu + kubunu versions 20.04 LTS. It does not work on older linux versions. 
@@ -27,30 +26,26 @@ Note that on Ubuntu 20.04 or newer PyQt4 is no longer available. A contributor h
 1. <h4>Install Dependencies via apt:</h4>
 
   `sudo apt update`<br>
-  `sudo apt install python3-pip build-essential gfortran libatlas3-base libatlas-base-dev python3-dev python3-setuptools libffi-dev python3-tk pkg-config libfreetype6-dev php-cli wondershaper python3-pyqt5 libffi7 cpufrequtils`
+  `sudo apt install python3-pip build-essential gfortran libatlas3-base libatlas-base-dev python3-dev python3-setuptools libffi-dev python3-tk pkg-config libfreetype6-dev php-cli wondershaper python3-pyqt5 libffi7 git cmake libusb-1.0-0-dev`
 
-2. <h4>Uninstall any preinstalled numpy packages as we want to install with pip3 to get optimized BLAS.</h4>
+2. <h4>Clone or unzip the software</h4>
+
+  `git clone https://github.com/darksidelemm/kerberossdr/`<br>
+
+3. <h4>Uninstall any preinstalled numpy packages as we want to install with pip3 to get optimized BLAS.</h4>
 
   `sudo apt remove python3-numpy`
 
-3. <h4>Install Dependencies via pip3:</h4>
+  <h4> Also remove the python3-pyqt5 package, leaving the qt5 libs (TODO: Check what libs are actually required) </h4>
 
-  `pip3 install numpy`<br>
-  `pip3 install matplotlib`<br>
-  `pip3 install scipy`<br>
-  `pip3 install cairocffi`<br>
-  `pip3 install pyapril`<br>
-  `pip3 install pyargus`<br>
-  `pip3 install pyqtgraph`<br>
-  `pip3 install peakutils`<br>
-  `pip3 install bottle`<br>
-  `pip3 install paste`<br>
+  `sudo apt remove python3-pyqt5`
 
-4. <h4>Install RTL-SDR-Kerberos Drivers</h4>
+4. <h4>Install Dependencies via pip3:</h4>
+  `sudo pip3 install -r requirements.txt`
+
+5. <h4>Install RTL-SDR-Kerberos Drivers</h4>
 
   Our Kerberos RTL-SDR driver branch contains code for slightly modified Osmocom RTL-SDR drivers that enable GPIO, disable dithering, and disable zerocopy buffers which seems to cause trouble on some ARM devices.
-
-  `sudo apt-get install libusb-1.0-0-dev git cmake`<br>
 
   `git clone https://github.com/rtlsdrblog/rtl-sdr-kerberos`<br>
 
@@ -65,20 +60,19 @@ Note that on Ubuntu 20.04 or newer PyQt4 is no longer available. A contributor h
 
   `echo 'blacklist dvb_usb_rtl28xxu' | sudo tee --append /etc/modprobe.d/blacklist-dvb_usb_rtl28xxu.conf`
 
-5. <h4>Reboot the Pi.</h4>
+6. <h4>Checkout Qt5 branch of KerberosSDR and setup</h4>
+  `cd kerberossdr`<br>
+  `git checkout qt5test`<br>
+  `sh setup_init.sh`
 
-6. <h4>Test 4x Tuners</h4>
+7. <h4>Reboot the Pi.</h4>
+
+8. <h4>Test 4x Tuners</h4>
 
   At this stage we recommend first testing your four tuners with rtl_test. Open four terminal windows, or tabs, and in each window run "rtl_test -d 0", "rtl_test -d 1", "rtl_test -d 2" and "rtl_test -d 3". Ensure that each unit connects and displays no errors.
 Install KerberosSDR Demo Software
 
-7. <h4>Clone or unzip the software</h4>
-
-  `git clone https://github.com/rfjohnso/kerberossdr`<br>
-  `cd kerberossdr`<br>
-  `sh setup_init.sh`
-
-8. <h4>Now you can run the software by typing</h4>
+9. <h4>Now you can run the software by typing</h4>
 
   `./run.sh`
 
