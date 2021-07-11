@@ -285,6 +285,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
         self.DOA_time = time.time()
+        self.DOA_UDP_time = time.time()
         self.PR_time = time.time()
         self.sync_time = time.time()
         self.spectrum_time = time.time()
@@ -762,7 +763,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             #print("[ INFO ] Python GUI: DOA results writen:",html_str)
 
             # Send the bearing information to Chasemapper
-            emit_bearing_msg(bearing=DOA, confidence = confidence_sum, power = np.maximum(0, max_power_level), raw_bearings=thetas, raw_doa=COMBINED_LOG)
+            # Only send at max 2 Hz for now. TODO: Set this rate from the GUI
+            currentTime = time.time()
+            if ((currentTime - self.DOA_time) > 0.5):
+                self.DOA_UDP_time = currentTime
+                emit_bearing_msg(bearing=DOA, confidence = confidence_sum, power = np.maximum(0, max_power_level), raw_bearings=thetas, raw_doa=COMBINED_LOG)
                                                                                  
         #self.DOA_res_fd.close()
 
